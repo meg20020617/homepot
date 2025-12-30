@@ -5,7 +5,7 @@ export const dynamic = "force-dynamic";
 
 export async function GET() {
     try {
-        const contentList = await prisma.siteContent.findMany();
+        const contentList = await (prisma as any).siteContent.findMany();
         // Convert array to object: { "hero_title": "Title...", "hero_desc": "..." }
         const contentMap: Record<string, string> = {};
         contentList.forEach((item) => {

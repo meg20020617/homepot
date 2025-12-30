@@ -17,7 +17,7 @@ export async function POST(request: Request) {
         const body = await request.json();
 
         const updates = Object.entries(body).map(([key, value]) => {
-            return prisma.siteContent.upsert({
+            return (prisma as any).siteContent.upsert({
                 where: { key },
                 update: { value: value as string },
                 create: { key, value: value as string, section: "General" }
